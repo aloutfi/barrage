@@ -37,9 +37,59 @@ barrage status
 
 ## Requirements
 
-
+- Git
+- Bash
 
 
 
 ## Installation
 
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/aloutfi/barrage.git
+    cd barrage
+    ```
+
+2. Make the script executable:
+    ```bash
+    chmod +x barrage
+    ```
+
+3. Move the script to a directory in your PATH, for example:
+    ```bash
+    sudo mv barrage /usr/local/bin/
+    ```
+
+## Alias Management
+
+### Creating an Alias
+
+To create an alias, use the `barrage alias` command followed by the alias name and the command you want to alias. For example:
+
+```bash
+barrage alias myalias "echo Hello, World!"
+```
+
+This will create an alias named `myalias` that runs the command `echo Hello, World!`.
+
+### Using an Alias
+
+To use an alias, simply call it by its name:
+
+```bash
+barrage myalias
+```
+
+This will execute the command associated with the alias.
+
+### Listing Aliases
+
+To list all aliases, you can view the contents of the `.barrage_aliases` file in your home directory:
+
+```bash
+cat ~/.barrage_aliases
+```
+
+### Removing an Alias
+
+To remove an alias, you can manually edit the `.barrage_aliases` file and remove the corresponding line.

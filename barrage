@@ -17,7 +17,23 @@ execute_in_repos() {
 
 # Function to handle alias creation and usage
 handle_alias() {
-    echo "TODO"
+    local alias_file="$HOME/.barrage_aliases"
+    local alias_name=$1
+    shift
+    local alias_command=$@
+
+    # Create alias
+    if [[ ! -z "$alias_command" ]]; then
+        echo "$alias_name=\"$alias_command\"" >> "$alias_file"
+    else
+        # Execute alias
+        if [[ -f "$alias_file" ]]; then
+            source "$alias_file"
+            eval "${!alias_name}"
+        else
+            echo "Alias file not found."
+        fi
+    fi
 }
 
 # Main execution loop
@@ -32,4 +48,3 @@ else
     # Assuming the current directory is the repo directory
     execute_in_repos "$(pwd)" "$command_to_execute"
 fi
-
